@@ -22,3 +22,5 @@ clblast/
 schemas/
 node_modules/
 .DS_Store
+desktop/.tauri/
+android/

@@ -5,8 +5,19 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 pub const APP_ID: &str = "github.com.thewh1teagle.vibe";
+
+#[cfg(any(target_os = "linux", target_os = "macos", target_os = "windows"))]
 pub const URL: &str = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium.bin?download=true";
+
+#[cfg(target_os = "android")]
+pub const URL: &str = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin?download=true";
+
+#[cfg(any(target_os = "linux", target_os = "macos", target_os = "windows"))]
 pub const FILENAME: &str = "ggml-medium.bin";
+
+#[cfg(target_os = "android")]
+pub const FILENAME: &str = "ggml-tiny.bin";
+
 // NOT a regular hash!! see integrity.rs
 pub const HASH: &str = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 

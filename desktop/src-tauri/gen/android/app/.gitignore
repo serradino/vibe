@@ -1,0 +1,5 @@
+/src/main/java/github/com/thewh1teagle/vibe_desktop/generated
+/src/main/jniLibs/**/*.so
+/src/main/assets/tauri.conf.json
+/tauri.build.gradle.kts
+/proguard-tauri.pro

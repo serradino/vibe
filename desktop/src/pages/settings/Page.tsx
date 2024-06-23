@@ -28,7 +28,7 @@ export default function SettingsPage({ setVisible }: SettingsPageProps) {
 				<button onMouseDown={() => setVisible(false)} className={cx('btn btn-square btn-ghost absolute start-0')}>
 					{i18n.dir() === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 				</button>
-				<div className="text-4xl text-center">{t('common.settings')}</div>
+				<div className="text-2xl md:text-4xl text-center">{t('common.settings')}</div>
 			</div>
 
 			<label className="form-control w-full mt-10">

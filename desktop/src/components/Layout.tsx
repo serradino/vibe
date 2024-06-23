@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 					<div className="relative w-[300px] m-auto">
 						<AppMenu onClickSettings={() => setSettingsVisible(true)} availableUpdate={availableUpdate} updateApp={updateApp} />
 					</div>
-					<h1 className="text-center text-4xl mb-2 text-base-content font-normal">{t('common.app-title')}</h1>
+					<h1 className="text-center text-2xl md:text-4xl mb-2 text-base-content font-normal">{t('common.app-title')}</h1>
 				</div>
 				{children}
 			</div>

@@ -9,10 +9,10 @@ use std::sync::{
     Arc,
 };
 use tauri::State;
-use tauri::{
-    window::{ProgressBarState, ProgressBarStatus},
-    Manager,
-};
+
+#[cfg(any(target_os = "linux", target_os = "macos", target_os = "windows"))]
+use tauri::window::{ProgressBarState, ProgressBarStatus};
+use tauri::Manager;
 use tokio::sync::Mutex;
 use vibe::{model::SegmentCallbackData, transcript::Transcript};
 pub mod audio;
@@ -38,27 +38,31 @@ pub async fn is_online(timeout: Option<u64>) -> Result<bool> {
 }
 
 fn set_progress_bar(app_handle: &tauri::AppHandle, progress: Option<f64>) -> Result<()> {
-    let window = app_handle.get_webview_window("main").context("get window")?;
-    if let Some(progress) = progress {
-        log::debug!("set_progress_bar {}", progress);
-        window.emit("transcribe_progress", progress).unwrap();
-        if progress > 1.0 {
+    #[cfg(any(target_os = "linux", target_os = "macos", target_os = "windows"))]
+    {
+        let window = app_handle.get_webview_window("main").context("get window")?;
+        if let Some(progress) = progress {
+            log::debug!("set_progress_bar {}", progress);
+            window.emit("transcribe_progress", progress).unwrap();
+            if progress > 1.0 {
+                window.set_progress_bar(ProgressBarState {
+                    progress: Some(progress as u64),
+                    status: if cfg!(target_os = "windows") {
+                        // It works in Windows without it, and setting it causes it to jump every time.
+                        None
+                    } else {
+                        Some(ProgressBarStatus::Indeterminate)
+                    },
+                })?;
+            }
+        } else {
             window.set_progress_bar(ProgressBarState {
-                progress: Some(progress as u64),
-                status: if cfg!(target_os = "windows") {
-                    // It works in Windows without it, and setting it causes it to jump every time.
-                    None
-                } else {
-                    Some(ProgressBarStatus::Indeterminate)
-                },
+                progress: Some(0),
+                status: Some(ProgressBarStatus::None),
             })?;
         }
-    } else {
-        window.set_progress_bar(ProgressBarState {
-            progress: Some(0),
-            status: Some(ProgressBarStatus::None),
-        })?;
     }
+
     Ok(())
 }
 

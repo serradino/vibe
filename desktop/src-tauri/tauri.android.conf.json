@@ -1,0 +1,12 @@
+{
+	"app": {
+		"windows": [
+			{
+				"title": "Vibe",
+				"url": "index.html",
+				"label": "main",
+				"visible": true
+			}
+		]
+	}
+}

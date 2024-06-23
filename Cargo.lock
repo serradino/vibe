@@ -5620,7 +5620,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "vibe-desktop"
+name = "vibe-app"
 version = "0.0.6"
 dependencies = [
  "clap",

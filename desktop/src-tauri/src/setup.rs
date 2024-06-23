@@ -1,8 +1,7 @@
 use crate::{cli, panic_hook};
-use tauri::{App, Manager};
+use tauri::{App, Manager, WebviewUrl};
 use tokio::sync::Mutex;
 use vibe::model::WhisperContext;
-
 pub struct ModelContext {
     pub path: String,
     pub handle: WhisperContext,
@@ -43,18 +42,20 @@ pub fn setup(app: &App) -> Result<(), Box<dyn std::error::Error>> {
     if cli::is_cli_detected() {
         cli::run(app);
     } else {
-        // Create main window
-        tauri::WebviewWindowBuilder::new(app, "main", tauri::WebviewUrl::App("index.html".into()))
-            .inner_size(800.0, 700.0)
-            .min_inner_size(800.0, 700.0)
-            .center()
-            .title("Vibe")
-            .resizable(true)
-            .focused(true)
-            .shadow(true)
-            .visible(false)
-            .build()
-            .expect("Can't create main window");
+        #[cfg(any(target_os = "linux", target_os = "macos", target_os = "windows"))]
+        {
+            let mut builder = tauri::WebviewWindowBuilder::new(app, "main", WebviewUrl::App("index.html".into()));
+            builder = builder
+                .inner_size(800.0, 700.0)
+                .min_inner_size(800.0, 700.0)
+                .center()
+                .title("Vibe")
+                .resizable(true)
+                .focused(true)
+                .shadow(true)
+                .visible(false);
+            builder.build().expect("Can't create main window");
+        }
     }
     Ok(())
 }

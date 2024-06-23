@@ -181,6 +181,9 @@ See [tauri.app/start/prerequisites/#configure-for-mobile-targets](https://v2.tau
 ```console
 export PATH="$PATH:$NDK_HOME/toolchains/llvm/prebuilt/darwin-x86_64/bin"
 export CMAKE_ANDROID_NDK=$NDK_HOME
+bunx tauri android init
+bun run scripts/dev_sign.js
+bunx tauri android dev
 ```
 
 # Debug mobile

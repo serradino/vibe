@@ -5,7 +5,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ErrorModalContext } from './ErrorModal'
 import { ModifyState } from '~/lib/utils'
-// Define the context type
+import * as os from '@tauri-apps/plugin-os'
 
 type UpdaterContextType = {
 	availableUpdate: boolean
@@ -48,6 +48,9 @@ export function UpdaterProvider({ children }: { children: React.ReactNode }) {
 	useEffect(() => {
 		// Check for new updates
 		async function checkForUpdates() {
+			if ((await os.platform()) == 'android') {
+				return
+			}
 			try {
 				const newUpdate = await checkUpdate()
 				if (newUpdate) {

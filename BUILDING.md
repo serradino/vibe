@@ -178,12 +178,20 @@ git push <fork url> HEAD:<branch>
 
 See [tauri.app/start/prerequisites/#configure-for-mobile-targets](https://v2.tauri.app/start/prerequisites/#configure-for-mobile-targets)
 
+See [tauri/issues/10024#issuecomment-2185361877](https://github.com/tauri-apps/tauri/issues/10024#issuecomment-2185361877)
+
 ```console
 export PATH="$PATH:$NDK_HOME/toolchains/llvm/prebuilt/darwin-x86_64/bin"
 export CMAKE_ANDROID_NDK=$NDK_HOME
 bunx tauri android init
 bun run scripts/dev_sign.js
 bunx tauri android dev
+```
+
+# Build mobile
+
+```
+bunx tauri android build
 ```
 
 # Debug mobile

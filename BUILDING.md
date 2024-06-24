@@ -183,10 +183,14 @@ See [tauri/issues/10024#issuecomment-2185361877](https://github.com/tauri-apps/t
 ```console
 export PATH="$PATH:$NDK_HOME/toolchains/llvm/prebuilt/darwin-x86_64/bin"
 export CMAKE_ANDROID_NDK=$NDK_HOME
+export CMAKE_MAKE_PROGRAM=$NDK_HOME/prebuilt/darwin-x86_64/bin/make
+export CMAKE_SYSTEM_PROCESSOR="armv7-a"
 bunx tauri android init
 bun run scripts/dev_sign.js
 bunx tauri android dev
 ```
+
+# TODO https://github.com/rust-lang/cmake-rs/issues/80
 
 # Build mobile
 

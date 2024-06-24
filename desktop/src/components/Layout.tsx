@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 	const { setTheme, theme } = usePreferencesContext()
 	return (
 		<div className="flex flex-col pb-[80px]">
-			<div className="absolute right-16 top-16">
+			<div className="absolute right-3 top-3 md:right-16 md:top-16">
 				<ThemeToggle setTheme={setTheme} theme={theme} />
 			</div>
 			{settingsVisible && <SettingsModal visible={settingsVisible} setVisible={setSettingsVisible} />}

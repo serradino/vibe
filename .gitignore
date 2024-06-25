@@ -22,3 +22,7 @@ clblast/
 schemas/
 node_modules/
 .DS_Store
+.flatpak-builder/
+build-dir/
+objects/
+vibe/

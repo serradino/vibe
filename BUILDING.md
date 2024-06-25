@@ -173,3 +173,13 @@ ffmpeg -i file.wav -ar 16000 -ac 1 -c:a pcm_s16le normal.wav
 gh pr checkout <url>
 git push <fork url> HEAD:<branch>
 ```
+
+
+## Build for Flatpak
+
+```console
+sudo apt install flatpak flatpak-builder
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install org.Gnome.Platform/x86_64/46 org.gnome.Sdk/x86_64/46
+flatpak-builder --repo vibe --force-clean build-dir github.com.thewh1teagle.vibe.yml
+```

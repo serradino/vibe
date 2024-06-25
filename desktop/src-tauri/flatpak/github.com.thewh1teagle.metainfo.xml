@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 First Lastname <your@email.com> -->
+<component>
+  <id>github.com.thewh1teagle.vibe</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Vibe</name>
+  <summary>Transcribe audio or video offline</summary>
+  <description>
+    <p>
+    Experience seamless language transcription with Vibe - your all-in-one solution for effortless audio and video transcription.
+    </p>
+  </description>
+  <url type="homepage">http://thewh1teagle.github.io/vibe</url>
+  <url type="bugtracker">https://github.com/thewh1teagle/vibe/issues</url>
+</component>

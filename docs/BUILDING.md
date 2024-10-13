@@ -101,6 +101,21 @@ cd desktop
 bunx tauri build
 ```
 
+## Build for Windows arm64
+
+1. Open visual studio installer -> individual components -> search for `msvc v143 - VS 2022 C++ arm64/arm64ec` -> install latest (~3GB)
+2. Add Rust toolchain
+
+```console
+rustup target add aarch64-pc-windows-msvc
+```
+
+3. Build with toolchain
+
+```console
+bunx tauri build -t aarch64-pc-windows-msvc
+```
+
 ## Gotchas
 
 On Windows when run `pre_build` with `--vulkan` you may need to run it with admin rights first time thanks to vulkan recent changes...

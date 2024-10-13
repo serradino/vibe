@@ -39,6 +39,10 @@ const config = {
 		vulkanSdkUrl: 'https://sdk.lunarg.com/sdk/download/1.3.290.0/windows/VulkanSDK-1.3.290.0-Installer.exe',
 		vcpkgPackages: [],
 	},
+	windowsArm64: {
+		ffmpegName: '',
+		ffmpegUrl: 'https://github.com/dvhh/ffmpeg-wos-arm64-build/releases/download/14-split-build-files/ffmpeg-wos-arm64.zip',
+	},
 	linux: {
 		aptPackages: [
 			'ffmpeg',
